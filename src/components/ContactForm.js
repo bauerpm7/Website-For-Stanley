@@ -235,6 +235,7 @@ class ContactForm extends React.Component {
           onChange={this.handleInputChange}
           required
         />
+        <div data-netlify-recaptcha></div>
         <Submit name="submit" type="submit" value="Send" />
 
         <Modal visible={this.state.showModal}>
