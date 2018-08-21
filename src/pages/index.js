@@ -12,8 +12,9 @@ import Link from "gatsby-link"
 
 const Index = ({ data }) => {
   const posts = data.allContentfulPost.edges
-  const image = data.contentfulHome.coverImage
+  const image = data.allContentfulHome.edges[2].node.coverImage
   const publications = data.allContentfulPublication.edges
+  console.log(image)
   return (
     <div>
       <SEO />
@@ -60,7 +61,10 @@ const Index = ({ data }) => {
 
 export const query = graphql`
   query indexQuery {
-    allContentfulPost(limit: 3, sort: {fields: [publishDate], order: DESC}) {
+    allContentfulPost(
+    limit: 3, 
+    sort: {fields: [publishDate], order: DESC}
+    ) {
       edges {
         node {
           title
@@ -82,12 +86,16 @@ export const query = graphql`
         }
       }
     }
-    contentfulHome {
-      coverImage {
-        title
-        sizes {
-          aspectRatio
-          srcSet
+    allContentfulHome {
+      edges {
+        node {
+          coverImage {
+            id
+            sizes {
+              aspectRatio
+              srcSet
+            }
+          }
         }
       }
     }
