@@ -6,6 +6,8 @@ const Header = styled.header`
   background: ${props => props.theme.colors.secondary};
   width: 100%;
   padding: 1.5em 0;
+  position: fixed;
+  z-index: 99;
 `
 const Nav = styled.nav`
   width: 100%;
@@ -40,7 +42,7 @@ const Nav = styled.nav`
 `
 
 const activeLinkStyle = {
-  color: 'DarkGrey',
+  borderBottom: '2px solid black'
 }
 
 const Menu = () => {
@@ -49,8 +51,8 @@ const Menu = () => {
       <Nav>
         <ul>
           <li>
-            <Link to="/" exact activeStyle={activeLinkStyle}>
-              Home
+            <Link to="#top" exact activeStyle={activeLinkStyle}>
+              Stanley Doe
             </Link>
           </li>
           <li>
