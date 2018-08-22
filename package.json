@@ -5,6 +5,7 @@
   "repository": "https://github.com/ryanwiemer/gatsby-starter-gcn",
   "author": "Ryan Wiemer <ryan@ryanwiemer.com>",
   "dependencies": {
+    "@material-ui/core": "^1.5.1",
     "chalk": "^2.4.1",
     "contentful-import": "^7.0.2",
     "gatsby": "^1.9.272",

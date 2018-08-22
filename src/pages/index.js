@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'gatsby-link'
 import CardList from '../components/CardList'
 import Card from '../components/Card'
 import Container from '../components/Container'
@@ -8,18 +9,22 @@ import Hero from '../components/Hero'
 import PaddedContainer from '../components/paddedContainer'
 import PublicationList from '../components/PublicationList'
 import Publication from '../components/Publication'
-import Link from "gatsby-link"
+import ContactForm from '../components/ContactForm'
 
 const Index = ({ data }) => {
   const posts = data.allContentfulPost.edges
-  const image = data.allContentfulHome.edges[2].node.coverImage
+  const image = data.contentfulCoverImage.image
   const publications = data.allContentfulPublication.edges
   console.log(image)
   return (
     <div>
       <SEO />
       <Container>
-        <Hero image = {image}/>
+        <Hero 
+          id = 'top'
+          image = {image}
+          title = {'Stanley Doe'}
+        />
         <PaddedContainer>
           <PageTitle>
             Recent Blog Posts
@@ -36,6 +41,7 @@ const Index = ({ data }) => {
               />
             ))}
           </CardList>
+          <Link to='/blog'>See More Blog Posts</Link>
           <PageTitle>
             Publications
           </PageTitle>
@@ -53,6 +59,8 @@ const Index = ({ data }) => {
                 />
             ))}
           </PublicationList>
+          <PageTitle>Contact</PageTitle>
+          <ContactForm />
         </PaddedContainer>
       </Container>
     </div>
@@ -86,16 +94,11 @@ export const query = graphql`
         }
       }
     }
-    allContentfulHome {
-      edges {
-        node {
-          coverImage {
-            id
-            sizes {
-              aspectRatio
-              srcSet
-            }
-          }
+    contentfulCoverImage {
+      image {
+        sizes {
+          aspectRatio
+          srcSet
         }
       }
     }
